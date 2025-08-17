@@ -15,34 +15,7 @@ df = read_excel('Copy of LHD Fatalities Database 08-13-2025.xlsx') |>
   mutate(
     hover_text = str_glue("{name}<br>{city}, {state}<br>River: {river_name}<br>Contributor: {Contributer}")
   )
-# Session timeout info----
-timeoutSeconds <- 60*15
-inactivity <- sprintf("function idleTimer() {
-var t = setTimeout(logout, %s);
-window.onmousemove = resetTimer; // catches mouse movements
-window.onmousedown = resetTimer; // catches mouse movements
-window.onclick = resetTimer;     // catches mouse clicks
-window.onscroll = resetTimer;    // catches scrolling
-window.onkeypress = resetTimer;  //catches keyboard actions
 
-function logout() {
-Shiny.setInputValue('timeOut', '%ss')
-}
-
-function resetTimer() {
-clearTimeout(t);
-t = setTimeout(logout, %s);  // time is in milliseconds (1000 is 1 second)
-}
-}
-idleTimer();", timeoutSeconds*1000, timeoutSeconds, timeoutSeconds*1000)
-# Define UI for application that draws a histogram
-
-# Colors----
-themeColors <- data.frame(colorName = c("fireEngineRed", 
-                                        "deepKoamaru", "persianGreen", "maximumYellowRed", 
-                                        "graniteGray"), 
-                          hex = c("#D12229", "#28335C", "#00A499", "#F3C454", "#63666A"), 
-                          rgb = c("rgb(209,34,41)", "rgb(40,51,92)", "rgb(0,164,153)", "rgb(243,196,84)", "rgb(99,102,106)"))
 # Trademark pictures----
 customerTrademarkUrl <- ""
 customerHomepageUrl <- ""
